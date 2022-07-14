@@ -1,21 +1,24 @@
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 
+import Head from 'next/head';
+
 const Home: NextPage = () => {
   return (
     <>
-      <Title>My page ATUA</Title>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-        neque, ab eligendi natus nostrum optio.
-      </p>
+      <>
+        <Head>
+          <title>JJCA | Home</title>
+          <meta name="keywords" content="jjca" />
+        </Head>
+        <PageWrapper>
+          <h1>HOMEPAGE</h1>
+        </PageWrapper>
+      </>
     </>
   );
 };
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
+const PageWrapper = styled.div``;
 
 export default Home;
