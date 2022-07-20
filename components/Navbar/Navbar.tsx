@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Spacer from '../Spacer';
 
 type Props = {};
 
@@ -11,6 +12,7 @@ const Navbar = (props: Props) => {
 
   return (
     <NavbarWrapper>
+      {/* <Spacer size={12} /> */}
       <Nav>
         <LogoWrapper>
           <Image
@@ -39,9 +41,9 @@ const Navbar = (props: Props) => {
 };
 
 const NavbarWrapper = styled.div`
-  margin: 10px auto 40px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  margin: 10px auto 0px;
+  padding: 12px 0;
+  /* border-bottom: 1px solid #ddd; */
 `;
 
 const Nav = styled.nav`
