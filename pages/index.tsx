@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         </Head>
         <PageWrapper>
           {/* Top Content */}
-          <CarouselWrapper>
+          <TopSectionWrapper>
             <Image src={Paramour} layout="fill" objectFit="cover" priority />
             <TextboxWrapper>
               <h2>
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
                 <ArrowRight color="white" size={38} strokeWidth={1} />
               </Button>
             </TextboxWrapper>
-          </CarouselWrapper>
+          </TopSectionWrapper>
           <Spacer size={128} />
 
           {/* Welcome */}
@@ -154,7 +154,7 @@ const PageWrapper = styled.div`
 `;
 
 // TOP PAGE
-const CarouselWrapper = styled.div`
+const TopSectionWrapper = styled.div`
   height: 80vh;
   width: 100%;
   margin: 0 auto;
