@@ -12,7 +12,7 @@ const Details = ({ project }) => {
     <>
       <PortfolioPagesWrapper>
         <ProjectImage>
-          <Image src={project.image} layout="fill" objectFit="none" priority />
+          <Image src={project.image} layout="fill" objectFit="cover" priority />
         </ProjectImage>
         <ProjectTextBox>
           <h1>Project {project.name}</h1>
