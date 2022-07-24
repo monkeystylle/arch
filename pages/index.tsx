@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Paramour from '../public/assets/home/paramour.jpg';
 import ImageWelcome from '../public/assets/home/image-welcome.jpg';
 import ImageSmallTeam from '../public/assets/home/image-small-team.jpg';
@@ -13,6 +14,8 @@ import Spacer from '../components/Spacer';
 import { ArrowRight } from 'react-feather';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <>
@@ -34,7 +37,7 @@ const Home: NextPage = () => {
                 <br /> time. The result is a fresh and futuristic model inspired
                 <br /> by space stations.
               </p>
-              <Button>
+              <Button onClick={() => router.push('/portfolio')}>
                 See our Portfolio
                 <ArrowRight color="white" size={38} strokeWidth={1} />
               </Button>
@@ -80,7 +83,7 @@ const Home: NextPage = () => {
               <h2>
                 Small Team <br /> Big Ideas{' '}
               </h2>
-              <Button>
+              <Button onClick={() => router.push('/about')}>
                 About Us
                 <ArrowRight color="white" size={38} strokeWidth={1} />
               </Button>
@@ -88,11 +91,11 @@ const Home: NextPage = () => {
           </BigIdeasSectionWrapper>
           <Spacer size={128} />
 
-          {/* Small Team Big Ideas */}
+          {/* Featured */}
           <FeaturedSectionWrapper>
             <FeaturedHeader>
               <h2>Featured</h2>
-              <FeaturedButton>
+              <FeaturedButton onClick={() => router.push('/portfolio')}>
                 See All
                 <ArrowRight color="white" size={38} strokeWidth={1} />
               </FeaturedButton>
@@ -257,7 +260,7 @@ const WelcomeTextBox = styled.div`
 `;
 
 const WelcomeImageBox = styled.div`
-  height: 65vh;
+  height: 538px;
   width: 355px;
   top: 88px;
   right: 0px;
@@ -272,7 +275,7 @@ const WelcomeImageBox = styled.div`
 
 //BIG IDEAS
 const BigIdeasSectionWrapper = styled.section`
-  height: 65vh;
+  height: 520px;
   width: 100%;
   margin: 0 auto;
   background-color: tomato;

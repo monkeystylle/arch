@@ -46,11 +46,11 @@ const contact: NextPage = (props: Props) => {
               <br /> Details
             </h2>
             <h3>Main Office</h3>
-            <p>Mail: email@mail.com</p>
             <p>
               Adress: RM 202 AL Metal Building #504 J.P Rizal St <br />
               Lamuna Malanday, Marikina City{' '}
             </p>
+            <p>Mail: email@mail.com</p>
             <p>Phone: 123-456-7890</p>
           </OfficeTextBox>
           <MapImageWrapper>
