@@ -29,9 +29,8 @@ const Home: NextPage = () => {
           <TopSectionWrapper>
             <Image src={Paramour} layout="fill" objectFit="cover" priority />
             <TextboxWrapper>
-              <h2>
-                Seraph <br /> Station{' '}
-              </h2>
+              <h2>JJCA</h2>
+              <h3>Architectural+Build</h3>
               <p>
                 The Seraph Station project challenged us to design a <br />
                 unique station that would transport people through
@@ -44,7 +43,7 @@ const Home: NextPage = () => {
               </Button>
             </TextboxWrapper>
           </TopSectionWrapper>
-          <Spacer size={128} />
+          <Spacer size={QUERIES.phoneAndSmaller ? 80 : 128} />
 
           {/* Welcome */}
           <WelcomeSectionWrapper>
@@ -90,7 +89,7 @@ const Home: NextPage = () => {
               </Button>
             </BigIdeasTextBox>
           </BigIdeasSectionWrapper>
-          <Spacer size={128} />
+          <Spacer size={QUERIES.phoneAndSmaller ? 90 : 128} />
 
           {/* Featured */}
           <FeaturedSectionWrapper>
@@ -146,7 +145,7 @@ const Home: NextPage = () => {
               </FeaturedCard>
             </FeaturedFlexWrapper>
           </FeaturedSectionWrapper>
-          <Spacer size={128} />
+          <Spacer size={QUERIES.phoneAndSmaller ? 60 : 128} />
         </PageWrapper>
       </>
     </>
@@ -174,6 +173,9 @@ const TopSectionWrapper = styled.div`
   @media ${QUERIES.tabletAndSmaller} {
     height: 520px;
   }
+  @media ${QUERIES.phoneAndSmaller} {
+    height: 500px;
+  }
 `;
 
 const TextboxWrapper = styled.div`
@@ -196,6 +198,23 @@ const TextboxWrapper = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 4.8rem;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 3rem;
+    }
+  }
+
+  h3 {
+    font-size: 4rem;
+    color: white;
+    font-weight: 600;
+    line-height: 0.85;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.6rem;
+    }
   }
 
   p {
@@ -208,10 +227,20 @@ const TextboxWrapper = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 1.1rem;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1rem;
+
+      br {
+        display: none;
+      }
+    }
   }
 
   @media ${QUERIES.tabletAndSmaller} {
     padding: 0 80px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    padding: 0 20px;
   }
 `;
 
@@ -234,6 +263,11 @@ const Button = styled.button`
   @media ${QUERIES.tabletAndSmaller} {
     font-size: 1.2rem;
     padding: 12px 28px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    font-size: 1.1rem;
+    padding: 8px 24px;
+    margin-top: 54px;
   }
 `;
 
@@ -265,6 +299,9 @@ const WelcomeTextBox = styled.div`
       left: 0px;
       line-height: 0.9;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      display: none;
+    }
   }
 
   h2 {
@@ -279,6 +316,13 @@ const WelcomeTextBox = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       padding-left: 16px;
       font-size: 3rem;
+      margin-bottom: 16px;
+      padding-top: 130px;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      padding-top: revert;
+      font-size: 2.6rem;
+      margin-bottom: 12px;
     }
   }
 
@@ -292,7 +336,10 @@ const WelcomeTextBox = styled.div`
 
     @media ${QUERIES.tabletAndSmaller} {
       margin-left: 16px;
-      width: 85%;
+      width: 80%;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1rem;
     }
   }
 `;
@@ -354,10 +401,16 @@ const BigIdeasTextBox = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 3.5rem;
     }
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 2.6rem;
+    }
   }
 
   @media ${QUERIES.tabletAndSmaller} {
     padding: 0 80px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    padding: 0 20px;
   }
 `;
 
@@ -370,12 +423,17 @@ const FeaturedHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 36px;
+  color: #60636c;
 
   h2 {
     font-size: 4.2rem;
     font-weight: 600;
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 3.5rem;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 2.8rem;
+      line-height: 0.1;
     }
   }
 `;
@@ -399,26 +457,40 @@ const FeaturedButton = styled.button`
     font-size: 1.2rem;
     padding: 12px 28px;
   }
+  @media ${QUERIES.phoneAndSmaller} {
+    display: none;
+  }
 `;
 
 const FeaturedFlexWrapper = styled.div`
   display: flex;
   gap: 0px 32px;
+
+  @media ${QUERIES.phoneAndSmaller} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px 0px;
+  }
 `;
 
 const FeaturedCard = styled.div`
   position: relative;
   height: 560px;
-  background: tomato;
   flex: 1;
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(85%);
+    @media ${QUERIES.phoneAndSmaller} {
+      border-radius: 4px;
+    }
   }
 
   @media ${QUERIES.tabletAndSmaller} {
     height: 400px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    height: 200px;
   }
 `;
 
@@ -439,6 +511,10 @@ const FeaturedTextBox = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 7rem;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      top: 10px;
+      font-size: 6rem;
+    }
   }
 `;
 
@@ -452,6 +528,10 @@ const ProjectText = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     font-size: 1.2rem;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    padding: 16px;
+    line-height: 1.2;
   }
 
   button {

@@ -29,7 +29,7 @@ const Container = styled.div`
     width: 85%;
   }
   @media ${QUERIES.tabletAndSmaller} {
-    width: 90%;
+    width: 94%;
   }
 `;
 

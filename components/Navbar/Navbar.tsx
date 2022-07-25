@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Spacer from '../Spacer';
 import { QUERIES } from '../../constants/constants';
+import { Menu } from 'react-feather';
 
 type Props = {};
 
@@ -20,6 +21,7 @@ const Navbar = (props: Props) => {
             src="/jjca2.png"
             width={128}
             height={77}
+            priority
           />
         </LogoWrapper>
 
@@ -36,6 +38,18 @@ const Navbar = (props: Props) => {
           <a>CONTACT</a>
         </Link>
       </Nav>
+      <Mobile>
+        <Image
+          onClick={() => router.push('/')}
+          src="/jjca2.png"
+          width={58}
+          height={38}
+          priority
+        />
+        <MenuButton>
+          <Menu size={38} strokeWidth={1} />
+        </MenuButton>
+      </Mobile>
     </NavbarWrapper>
   );
 };
@@ -54,15 +68,40 @@ const Nav = styled.nav`
   align-items: center;
   font-size: 1.5rem;
   justify-content: start;
+  color: #60636c;
 
   @media ${QUERIES.tabletAndSmaller} {
     font-size: 1.4rem;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    display: none;
   }
 `;
 
 const LogoWrapper = styled.div`
   font-size: 2rem;
   height: 100%;
+`;
+
+//MENU BUTTON
+
+const Mobile = styled.div`
+  display: none;
+  justify-content: space-between;
+  padding-bottom: 4px;
+
+  @media ${QUERIES.phoneAndSmaller} {
+    display: flex;
+  }
+`;
+
+const MenuButton = styled.button`
+  &:focus {
+    outline-offset: 2px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 `;
 
 export default Navbar;
