@@ -12,6 +12,7 @@ import ImageFeaturedProject3 from '../public/assets/portfolio/proj3.jpg';
 import Head from 'next/head';
 import Spacer from '../components/Spacer';
 import { ArrowRight } from 'react-feather';
+import { QUERIES } from '../constants/constants';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -60,8 +61,8 @@ const Home: NextPage = () => {
                 <br />
                 <br />
                 Over the past 10 years, we have worked on all kinds of projects.
-                From stations to high-rise buildings, we
-                <br /> create spaces that inspire and delight.
+                From stations to high-rise buildings, we create spaces that
+                inspire and delight.
                 <br />
                 <br />
                 We work closely with our clients so that we understand the
@@ -81,7 +82,7 @@ const Home: NextPage = () => {
             <Image src={ImageSmallTeam} layout="fill" objectFit="cover" />
             <BigIdeasTextBox>
               <h2>
-                Small Team <br /> Big Ideas{' '}
+                Small Team, <br /> Big Ideas{' '}
               </h2>
               <Button onClick={() => router.push('/about')}>
                 About Us
@@ -158,7 +159,7 @@ const PageWrapper = styled.div`
 
 // TOP PAGE
 const TopSectionWrapper = styled.div`
-  height: 80vh;
+  height: 680px;
   width: 100%;
   margin: 0 auto;
   background-color: tomato;
@@ -168,6 +169,10 @@ const TopSectionWrapper = styled.div`
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(50%);
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    height: 520px;
   }
 `;
 
@@ -187,6 +192,10 @@ const TextboxWrapper = styled.div`
     color: white;
     font-weight: 600;
     line-height: 0.85;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 4.8rem;
+    }
   }
 
   p {
@@ -195,6 +204,14 @@ const TextboxWrapper = styled.div`
     font-size: 1.2rem;
     line-height: 1.4;
     text-align: left;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    padding: 0 80px;
   }
 `;
 
@@ -213,12 +230,17 @@ const Button = styled.button`
   &:hover {
     background: #404a69;
   }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
+    padding: 12px 28px;
+  }
 `;
 
 //WELCOME SECTION
 
 const WelcomeSectionWrapper = styled.section`
-  height: 85vh;
+  /* height: 85vh; */
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -237,6 +259,12 @@ const WelcomeTextBox = styled.div`
     font-weight: 700;
     line-height: 200px;
     z-index: 1;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 10rem;
+      left: 0px;
+      line-height: 0.9;
+    }
   }
 
   h2 {
@@ -247,6 +275,11 @@ const WelcomeTextBox = styled.div`
     line-height: 0.85;
     font-weight: 600;
     color: #60636c;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      padding-left: 16px;
+      font-size: 3rem;
+    }
   }
 
   p {
@@ -256,6 +289,11 @@ const WelcomeTextBox = styled.div`
     font-size: 1.2rem;
     line-height: 1.4;
     text-align: left;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      margin-left: 16px;
+      width: 85%;
+    }
   }
 `;
 
@@ -271,6 +309,10 @@ const WelcomeImageBox = styled.div`
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 //BIG IDEAS
@@ -285,6 +327,10 @@ const BigIdeasSectionWrapper = styled.section`
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(50%);
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    height: 400px;
   }
 `;
 
@@ -304,6 +350,14 @@ const BigIdeasTextBox = styled.div`
     color: white;
     font-weight: 600;
     line-height: 0.85;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    padding: 0 80px;
   }
 `;
 
@@ -320,6 +374,9 @@ const FeaturedHeader = styled.div`
   h2 {
     font-size: 4.2rem;
     font-weight: 600;
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+    }
   }
 `;
 
@@ -336,6 +393,11 @@ const FeaturedButton = styled.button`
 
   &:hover {
     background: #404a69;
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
+    padding: 12px 28px;
   }
 `;
 
@@ -354,6 +416,10 @@ const FeaturedCard = styled.div`
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(85%);
   }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    height: 400px;
+  }
 `;
 
 const FeaturedTextBox = styled.div`
@@ -369,6 +435,10 @@ const FeaturedTextBox = styled.div`
     opacity: 0.5;
     font-size: 14rem;
     line-height: normal;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 7rem;
+    }
   }
 `;
 
@@ -380,10 +450,18 @@ const ProjectText = styled.div`
   color: white;
   font-size: 1.4rem;
 
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
+  }
+
   button {
     font-weight: 400;
     font-size: 1.3rem;
     opacity: 0.8;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 1.1rem;
+    }
   }
 `;
 

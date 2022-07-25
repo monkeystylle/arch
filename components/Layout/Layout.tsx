@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+import { QUERIES } from '../../constants/constants';
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 
@@ -23,6 +24,13 @@ const Container = styled.div`
   min-height: 100vh;
   max-width: 1200px;
   margin: auto;
+
+  @media ${QUERIES.laptopAndSmaller} {
+    width: 85%;
+  }
+  @media ${QUERIES.tabletAndSmaller} {
+    width: 90%;
+  }
 `;
 
 const Content = styled.div`
