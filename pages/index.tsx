@@ -13,9 +13,11 @@ import Head from 'next/head';
 import Spacer from '../components/Spacer';
 import { ArrowRight } from 'react-feather';
 import { QUERIES } from '../constants/constants';
+import useWindowDimensions from '../hooks/use-window-dimension.hook';
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const { width } = useWindowDimensions();
 
   return (
     <>
@@ -43,7 +45,7 @@ const Home: NextPage = () => {
               </Button>
             </TextboxWrapper>
           </TopSectionWrapper>
-          <Spacer size={QUERIES.phoneAndSmaller ? 80 : 128} />
+          <Spacer size={width <= 1100 ? 80 : 128} />
 
           {/* Welcome */}
           <WelcomeSectionWrapper>
@@ -89,7 +91,7 @@ const Home: NextPage = () => {
               </Button>
             </BigIdeasTextBox>
           </BigIdeasSectionWrapper>
-          <Spacer size={QUERIES.phoneAndSmaller ? 90 : 128} />
+          <Spacer size={width <= 1100 ? 90 : 128} />
 
           {/* Featured */}
           <FeaturedSectionWrapper>
@@ -145,7 +147,7 @@ const Home: NextPage = () => {
               </FeaturedCard>
             </FeaturedFlexWrapper>
           </FeaturedSectionWrapper>
-          <Spacer size={QUERIES.phoneAndSmaller ? 60 : 128} />
+          <Spacer size={width <= 1100 ? 60 : 128} />
         </PageWrapper>
       </>
     </>

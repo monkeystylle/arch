@@ -4,6 +4,7 @@ import Head from 'next/head';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import ImageServices from '../public/assets/services/image-services.png';
+import AboutHeritage from '../public/assets/about/image-about-heritage.jpg';
 
 type Props = {};
 
@@ -14,58 +15,32 @@ const services: NextPage = (props: Props) => {
         <title>JJCA | Services</title>
         <meta name="keywords" content="jjca" />
       </Head>
-      <ServicesPageWrapper>
+      <GridWrapper>
         <ImageWrapper>
-          <Image src={ImageServices} layout="fill" objectFit="fill" priority />
+          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
         </ImageWrapper>
-        <TextBox>
-          <h5>&#8226; Architectural Design</h5>
-          <h5>
-            &#8226; Construction Fit-Outs, Residential, <br />
-            Warehouses, Commercial
-          </h5>
-          <h5>&#8226; Plumbing Design</h5>
-          <h5>
-            &#8226; Steel, Stainless Steel, Aluminum Composite,
-            <br /> Panel Fabrication
-          </h5>
-          <h5>&#8226; Interior Design</h5>
-          <h5>&#8226; Landscaping</h5>
-        </TextBox>
-      </ServicesPageWrapper>
+        <ImageWrapper>
+          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
+        </ImageWrapper>
+        <ImageWrapper>
+          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
+        </ImageWrapper>
+      </GridWrapper>
     </>
   );
 };
 
-const ServicesPageWrapper = styled.div`
-  min-height: 80vh;
-  display: flex;
+const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 64px;
 `;
 
 const ImageWrapper = styled.div`
+  border: 5px solid tomato;
   position: relative;
-  flex: 1;
   width: 100%;
-
-  filter: grayscale(90%);
-`;
-
-const TextBox = styled.div`
-  /* margin-top: 100px; */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  h5 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 110%;
-    opacity: 0.7;
-    margin-bottom: 20px;
-    margin-left: 64px;
-    white-space: nowrap;
-  }
+  padding-top: 100%;
 `;
 
 export default services;

@@ -4,12 +4,16 @@ import styled from 'styled-components';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import AboutTop from '../public/assets/about/image-about-top.jpg';
+import AboutTopTablet from '../public/assets/about/image-about-top-tablet.jpg';
 import AboutHeritage from '../public/assets/about/image-about-heritage.jpg';
 import Spacer from '../components/Spacer';
 
-import { LEADERS } from '../constants/constants';
+import { LEADERS, QUERIES } from '../constants/constants';
+import useWindowDimensions from '../hooks/use-window-dimension.hook';
 
 const about: NextPage = (props: any) => {
+  const { width } = useWindowDimensions();
+
   return (
     <>
       <Head>
@@ -20,8 +24,14 @@ const about: NextPage = (props: any) => {
         {/* TOP SECTION */}
         <TopSectionWrapper>
           <AboutImageWrapper>
-            <Image src={AboutTop} layout="fill" objectFit="fill" priority />
+            <Image
+              src={width <= 1100 ? AboutTopTablet : AboutTop}
+              layout="fill"
+              objectFit="fill"
+              priority
+            />
           </AboutImageWrapper>
+
           <AboutTextBox>
             <h1>About</h1>
             <h2>
@@ -36,7 +46,11 @@ const about: NextPage = (props: any) => {
             </p>
           </AboutTextBox>
         </TopSectionWrapper>
-        <Spacer size={192} />
+
+        <Spacer
+          style={{ border: '2px solid green' }}
+          size={width <= 1100 ? 40 : 128}
+        />
 
         {/* HERITAGE */}
         <HeritageSectionWrapper>
@@ -71,7 +85,7 @@ const about: NextPage = (props: any) => {
             />
           </HeritageImageWrapper>
         </HeritageSectionWrapper>
-        <Spacer size={160} />
+        <Spacer size={width <= 1100 ? 80 : 160} />
 
         {/* THE LEADERS */}
         <TheLeadersSectionWrapper>
@@ -93,7 +107,7 @@ const about: NextPage = (props: any) => {
             ))}
           </LeadersImageBox>
         </TheLeadersSectionWrapper>
-        <Spacer size={128} />
+        <Spacer size={width <= 1100 ? 64 : 128} />
       </AboutPageWrapper>
     </>
   );
@@ -103,24 +117,30 @@ const AboutPageWrapper = styled.div``;
 
 // TOP SECTION
 const TopSectionWrapper = styled.section`
-  height: 720px;
   width: 100%;
   margin: 0 auto;
-  /* background-color: tomato; */
-
   position: relative;
-
-  & > span {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    filter: brightness(50%);
-  }
+  /* border: 5px solid gold; */
 `;
 
 const AboutImageWrapper = styled.div`
   width: 700px;
-  height: 100%;
-  background-color: lightsalmon;
+  height: 720px;
   position: relative;
+  /* border: 5px solid gray; */
+
+  @media ${QUERIES.tabletAndSmaller} {
+    width: 100%;
+    height: 350px;
+  }
+
+  & > span {
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0), 0 0px 20px 0 rgba(0, 0, 0, 0);
+
+    @media ${QUERIES.tabletAndSmaller} {
+      filter: brightness(70%);
+    }
+  }
 `;
 
 const AboutTextBox = styled.div`
@@ -131,13 +151,22 @@ const AboutTextBox = styled.div`
   width: 657px;
   height: 501px;
 
+  @media ${QUERIES.tabletAndSmaller} {
+    position: revert;
+    height: revert;
+    width: 100%;
+  }
+
   h1 {
     color: #eeeff4;
     font-size: 15.3rem;
     line-height: 0.3;
     font-weight: 600;
     margin-left: -24px;
-    /* filter: brightness(98%); */
+
+    @media ${QUERIES.tabletAndSmaller} {
+      display: none;
+    }
   }
 
   h2 {
@@ -146,14 +175,26 @@ const AboutTextBox = styled.div`
     margin: 150px 0px 0px 170px;
     font-weight: 600;
     color: #1b1d23;
+    @media ${QUERIES.tabletAndSmaller} {
+      margin: 0px 0px;
+      font-size: 3.5rem;
+      margin-top: 32px;
+    }
   }
-
   p {
     color: #60636d;
     font-size: 1.2rem;
     line-height: 140%;
     margin-left: 170px;
     margin-top: 40px;
+    @media ${QUERIES.tabletAndSmaller} {
+      margin: 0px 0px;
+      margin-top: 16px;
+
+      br {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -164,6 +205,11 @@ const HeritageSectionWrapper = styled.section`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 54%;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: revert;
+    height: revert;
+  }
 `;
 
 const HeritageTextBox = styled.div`
@@ -179,6 +225,14 @@ const HeritageTextBox = styled.div`
     line-height: 80%;
     color: #1b1d23;
     font-weight: 600;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+
+      br {
+        display: none;
+      }
+    }
   }
 
   p {
@@ -186,11 +240,19 @@ const HeritageTextBox = styled.div`
     font-size: 1.2rem;
     line-height: 140%;
     margin-top: 48px;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      margin-top: 16px;
+    }
   }
 `;
 
 const HeritageImageWrapper = styled.div`
   position: relative;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 // THE LEADERS
@@ -198,14 +260,25 @@ const HeritageImageWrapper = styled.div`
 const TheLeadersSectionWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: revert;
+  }
 `;
 
 const LeadersTextBox = styled.div`
   h2 {
     font-size: 4.5rem;
     line-height: 56px;
-
     font-weight: 600;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+
+      br {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -214,6 +287,14 @@ const LeadersImageBox = styled.div`
   grid-template-columns: 325px 325px;
   gap: 32px;
   justify-content: end;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+  }
 `;
 
 const LeaderCard = styled.div`
@@ -236,6 +317,11 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 325px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    height: auto;
+    padding-top: 100%;
+  }
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
