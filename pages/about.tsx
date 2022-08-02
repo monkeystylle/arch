@@ -47,10 +47,7 @@ const about: NextPage = (props: any) => {
           </AboutTextBox>
         </TopSectionWrapper>
 
-        <Spacer
-          style={{ border: '2px solid green' }}
-          size={width <= 1100 ? 40 : 128}
-        />
+        <Spacer size={width <= 1100 ? 40 : 128} />
 
         {/* HERITAGE */}
         <HeritageSectionWrapper>
@@ -85,7 +82,7 @@ const about: NextPage = (props: any) => {
             />
           </HeritageImageWrapper>
         </HeritageSectionWrapper>
-        <Spacer size={width <= 1100 ? 80 : 160} />
+        <Spacer size={width <= 600 ? 40 : width <= 1100 ? 80 : 160} />
 
         {/* THE LEADERS */}
         <TheLeadersSectionWrapper>
@@ -134,6 +131,10 @@ const AboutImageWrapper = styled.div`
     height: 350px;
   }
 
+  @media ${QUERIES.phoneAndSmaller} {
+    height: 250px;
+  }
+
   & > span {
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0), 0 0px 20px 0 rgba(0, 0, 0, 0);
 
@@ -180,6 +181,9 @@ const AboutTextBox = styled.div`
       font-size: 3.5rem;
       margin-top: 32px;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.75rem;
+    }
   }
   p {
     color: #60636d;
@@ -194,6 +198,9 @@ const AboutTextBox = styled.div`
       br {
         display: none;
       }
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.125rem;
     }
   }
 `;
@@ -220,6 +227,10 @@ const HeritageTextBox = styled.div`
   justify-content: center;
   padding-right: 60px;
 
+  @media ${QUERIES.phoneAndSmaller} {
+    padding-right: revert;
+  }
+
   h2 {
     font-size: 4.5rem;
     line-height: 80%;
@@ -233,6 +244,9 @@ const HeritageTextBox = styled.div`
         display: none;
       }
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.75rem;
+    }
   }
 
   p {
@@ -243,6 +257,9 @@ const HeritageTextBox = styled.div`
 
     @media ${QUERIES.tabletAndSmaller} {
       margin-top: 16px;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.125rem;
     }
   }
 `;
@@ -274,10 +291,15 @@ const LeadersTextBox = styled.div`
 
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 3.5rem;
+      padding-left: 32px;
 
       br {
         display: none;
       }
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      padding-left: revert;
+      font-size: 1.75rem;
     }
   }
 `;
@@ -295,6 +317,10 @@ const LeadersImageBox = styled.div`
     align-items: center;
     padding: 32px;
   }
+  @media ${QUERIES.phoneAndSmaller} {
+    padding: revert;
+    gap: 32px;
+  }
 `;
 
 const LeaderCard = styled.div`
@@ -304,12 +330,18 @@ const LeaderCard = styled.div`
     margin-top: 12px;
     font-size: 1.4rem;
     color: #1b1d23;
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.125rem;
+    }
   }
 
   p {
     font-size: 1.4rem;
     color: #1b1d23;
     opacity: 0.6;
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.125rem;
+    }
   }
 `;
 

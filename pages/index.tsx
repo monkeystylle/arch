@@ -227,11 +227,9 @@ const TextboxWrapper = styled.div`
     text-align: left;
 
     @media ${QUERIES.tabletAndSmaller} {
-      font-size: 1.1rem;
+      font-size: 1.125rem;
     }
     @media ${QUERIES.phoneAndSmaller} {
-      font-size: 1rem;
-
       br {
         display: none;
       }
@@ -341,7 +339,7 @@ const WelcomeTextBox = styled.div`
       width: 80%;
     }
     @media ${QUERIES.phoneAndSmaller} {
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
   }
 `;
