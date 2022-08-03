@@ -104,7 +104,7 @@ const about: NextPage = (props: any) => {
             ))}
           </LeadersImageBox>
         </TheLeadersSectionWrapper>
-        <Spacer size={width <= 1100 ? 64 : 128} />
+        <Spacer size={width <= 600 ? 20 : width <= 1100 ? 64 : 128} />
       </AboutPageWrapper>
     </>
   );
@@ -246,12 +246,15 @@ const HeritageTextBox = styled.div`
     }
     @media ${QUERIES.phoneAndSmaller} {
       font-size: 1.75rem;
+      br {
+        display: revert;
+      }
     }
   }
 
   p {
     color: #60636d;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     line-height: 140%;
     margin-top: 48px;
 
@@ -259,7 +262,6 @@ const HeritageTextBox = styled.div`
       margin-top: 16px;
     }
     @media ${QUERIES.phoneAndSmaller} {
-      font-size: 1.125rem;
     }
   }
 `;
@@ -298,7 +300,6 @@ const LeadersTextBox = styled.div`
       }
     }
     @media ${QUERIES.phoneAndSmaller} {
-      padding-left: revert;
       font-size: 1.75rem;
     }
   }
@@ -318,8 +319,9 @@ const LeadersImageBox = styled.div`
     padding: 32px;
   }
   @media ${QUERIES.phoneAndSmaller} {
-    padding: revert;
+    grid-template-columns: 1fr;
     gap: 32px;
+    padding-top: 0px;
   }
 `;
 
@@ -331,7 +333,7 @@ const LeaderCard = styled.div`
     font-size: 1.4rem;
     color: #1b1d23;
     @media ${QUERIES.phoneAndSmaller} {
-      font-size: 1.125rem;
+      font-size: 1.2rem;
     }
   }
 

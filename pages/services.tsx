@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import ImageServices from '../public/assets/services/image-services.png';
-import AboutHeritage from '../public/assets/about/image-about-heritage.jpg';
+
+import seven from '../public/assets/portfolio/proj7.jpg';
+import eight from '../public/assets/portfolio/proj8.jpg';
+import nine from '../public/assets/portfolio/proj9.jpg';
 
 type Props = {};
 
@@ -17,13 +19,13 @@ const services: NextPage = (props: Props) => {
       </Head>
       <GridWrapper>
         <ImageWrapper>
-          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
+          <Image src={seven} layout="fill" objectFit="fill" priority />
         </ImageWrapper>
         <ImageWrapper>
-          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
+          <Image src={eight} layout="fill" objectFit="fill" priority />
         </ImageWrapper>
         <ImageWrapper>
-          <Image src={AboutHeritage} layout="fill" objectFit="fill" priority />
+          <Image src={nine} layout="fill" objectFit="fill" priority />
         </ImageWrapper>
       </GridWrapper>
     </>

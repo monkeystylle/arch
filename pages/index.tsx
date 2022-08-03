@@ -315,13 +315,16 @@ const WelcomeTextBox = styled.div`
 
     @media ${QUERIES.tabletAndSmaller} {
       padding-left: 16px;
-      font-size: 3rem;
+      /* font-size: 3rem; */
+      font-size: 4rem;
+      font-weight: 700;
       margin-bottom: 16px;
       padding-top: 130px;
     }
     @media ${QUERIES.phoneAndSmaller} {
       padding-top: revert;
       font-size: 2.6rem;
+
       margin-bottom: 12px;
     }
   }
@@ -330,7 +333,7 @@ const WelcomeTextBox = styled.div`
     width: 446px;
     margin-left: 250px;
     color: #1b1d23;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     line-height: 1.4;
     text-align: left;
 

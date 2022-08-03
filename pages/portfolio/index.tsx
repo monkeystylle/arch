@@ -7,6 +7,8 @@ import styled from 'styled-components';
 
 import Spacer from '../../components/Spacer';
 import { PROJECTS } from './portfolio.constants';
+import { QUERIES } from '../../constants/constants';
+import useWindowDimensions from '../../hooks/use-window-dimension.hook';
 
 type Props = {};
 
@@ -23,6 +25,7 @@ interface Iprojects {
 
 const portfolio: NextPage<PortfolioProps> = ({ projects }) => {
   console.log('hereeeeeeee', projects);
+  const { width } = useWindowDimensions();
 
   return (
     <>
@@ -43,18 +46,17 @@ const portfolio: NextPage<PortfolioProps> = ({ projects }) => {
               <ProjectsTextBox>
                 <ProjectText>
                   <h3>Project {project.name}</h3>
-                  <button>View Project</button>
+                  <button>View </button>
                 </ProjectText>
               </ProjectsTextBox>
             </ProjectsCard>
           </Link>
         ))}
       </PortfolioPageWrapper>
-      <Spacer size={128} />
+      <Spacer size={width <= 600 ? 32 : width <= 1100 ? 64 : 128} />
     </>
   );
 };
-
 export const getStaticProps: GetStaticProps = async () => {
   const data = PROJECTS;
 
@@ -70,17 +72,27 @@ export const getStaticProps: GetStaticProps = async () => {
 const PortfolioPageWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 560px;
   gap: 32px;
+
+  @media ${QUERIES.phoneAndSmaller} {
+    grid-template-columns: 1fr;
+    margin-top: 16px;
+  }
 `;
 
 const ProjectsCard = styled.div`
   position: relative;
-  background: tomato;
+  width: 100%;
+  padding-top: 140%;
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(80%);
+    border-radius: 8px;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    padding-top: 60%;
   }
 `;
 
@@ -103,6 +115,18 @@ const ProjectText = styled.div`
     font-weight: 400;
     font-size: 1.3rem;
     opacity: 0.8;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 1.2rem;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      margin-bottom: -8px;
+    }
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    padding: 16px;
+    font-size: 1.2rem;
   }
 `;
 

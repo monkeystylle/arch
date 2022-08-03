@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Spacer from '../Spacer';
+import Logo from '../../public/assets/nav/logo.svg';
 import { QUERIES } from '../../constants/constants';
 import { Menu } from 'react-feather';
 
@@ -18,9 +19,9 @@ const Navbar = (props: Props) => {
         <LogoWrapper>
           <Image
             onClick={() => router.push('/')}
-            src="/jjca2.png"
-            width={128}
-            height={77}
+            src={Logo}
+            width={97}
+            height={40}
             priority
           />
         </LogoWrapper>
@@ -31,9 +32,7 @@ const Navbar = (props: Props) => {
         <Link href="/portfolio">
           <a>PORTFOLIO</a>
         </Link>
-        <Link href="/services">
-          <a>SERVICES</a>
-        </Link>
+
         <Link href="/contact">
           <a>CONTACT</a>
         </Link>
@@ -41,9 +40,9 @@ const Navbar = (props: Props) => {
       <Mobile>
         <Image
           onClick={() => router.push('/')}
-          src="/jjca2.png"
-          width={58}
-          height={38}
+          src={Logo}
+          width={97}
+          height={40}
           priority
         />
         <MenuButton>
@@ -55,7 +54,7 @@ const Navbar = (props: Props) => {
 };
 
 const NavbarWrapper = styled.div`
-  margin: 10px auto 0px;
+  margin: 18px auto 0px;
   padding: 12px 0;
   width: 100%;
   /* border-bottom: 1px solid #ddd; */
