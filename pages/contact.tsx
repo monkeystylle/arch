@@ -47,7 +47,7 @@ const contact: NextPage = (props: Props) => {
             </p>
           </ContactTextBox>
         </TopSectionWrapper>
-        <Spacer size={width <= 1100 ? 96 : 192} />
+        <Spacer size={width <= 550 ? 24 : width <= 1100 ? 96 : 192} />
 
         {/* CONTACT SECTION */}
         <ContactSectionWrapper>
@@ -65,10 +65,15 @@ const contact: NextPage = (props: Props) => {
             <p>Phone: 123-456-7890</p>
           </OfficeTextBox>
           <MapImageWrapper>
-            <Image src={ImageMap} layout="fill" objectFit="cover" priority />
+            <Image
+              src={ImageMap}
+              layout="fill"
+              objectFit={width <= 550 ? 'cover' : 'fill'}
+              priority
+            />
           </MapImageWrapper>
         </ContactSectionWrapper>
-        <Spacer size={160} />
+        <Spacer size={width <= 550 ? 128 : 160} />
 
         {/* FORM SECTION */}
         <FormSectionWrapper>
@@ -91,7 +96,7 @@ const contact: NextPage = (props: Props) => {
             </Button>
           </FormBox>
         </FormSectionWrapper>
-        <Spacer size={128} />
+        <Spacer size={width <= 550 ? 64 : width <= 1100 ? 64 : 160} />
       </ContactPageWrapper>
     </>
   );
@@ -130,6 +135,9 @@ const TopSectionWrapper = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     display: flex;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    display: revert;
   }
 `;
 
@@ -174,6 +182,14 @@ const ContactTextBox = styled.div`
     margin: 16px 32px;
   }
 
+  @media ${QUERIES.phoneAndSmaller} {
+    margin: 32px 0px 0px;
+
+    br {
+      display: none;
+    }
+  }
+
   h1 {
     color: #eeeff4;
     font-size: 14.3rem;
@@ -198,6 +214,7 @@ const ContactTextBox = styled.div`
     }
     @media ${QUERIES.phoneAndSmaller} {
       font-size: 1.75rem;
+      margin-top: 32px;
     }
   }
   p {
@@ -208,7 +225,7 @@ const ContactTextBox = styled.div`
     margin-top: 40px;
     @media ${QUERIES.tabletAndSmaller} {
       margin: 0px 0px;
-      margin-top: 16px;
+      margin-top: 24px;
 
       br {
         display: none;
@@ -216,6 +233,8 @@ const ContactTextBox = styled.div`
     }
     @media ${QUERIES.phoneAndSmaller} {
       font-size: 1.125rem;
+      margin-top: 8px;
+      text-align: justify;
     }
   }
 `;
@@ -230,6 +249,10 @@ const ContactSectionWrapper = styled.section`
 
   @media ${QUERIES.tabletAndSmaller} {
     height: 400px;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 `;
 
@@ -250,12 +273,18 @@ const OfficeTextBox = styled.div`
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 3.5rem;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      display: none;
+    }
   }
 
   h3 {
     font-size: 1.2rem;
     line-height: 140%;
     margin-top: 48px;
+    @media ${QUERIES.phoneAndSmaller} {
+      margin-top: 16px;
+    }
   }
 
   p {
@@ -272,6 +301,9 @@ const MapImageWrapper = styled.div`
   @media ${QUERIES.tabletAndSmaller} {
     font-size: 3.5rem;
   }
+  @media ${QUERIES.phoneAndSmaller} {
+    height: 250px;
+  }
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -284,6 +316,9 @@ const FormSectionWrapper = styled.section`
 
   @media ${QUERIES.tabletAndSmaller} {
     flex-direction: row-reverse;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    flex-direction: column;
   }
 
   h2 {
@@ -300,6 +335,14 @@ const FormSectionWrapper = styled.section`
       justify-content: center;
       margin-top: 32px;
     }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.75rem;
+      display: revert;
+
+      br {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -308,6 +351,9 @@ const FormBox = styled.div`
 
   @media ${QUERIES.tabletAndSmaller} {
     flex: 60%;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    margin-top: 16px;
   }
 `;
 
@@ -352,6 +398,10 @@ const TextArea = styled.textarea`
 
   &:focus::placeholder {
     color: transparent;
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
   }
 `;
 
