@@ -31,7 +31,7 @@ export const LEADERS = [
 // BREAKPOINT
 
 export const BREAKPOINTS = {
-  phone: 600,
+  phone: 550,
   tablet: 1100,
   laptop: 1500,
 };

@@ -5,12 +5,18 @@ import type { NextPage } from 'next';
 import Spacer from '../components/Spacer';
 import Image from 'next/image';
 import ImageContact from '../public/assets/contact/image-contact.jpg';
+import ImageContact2 from '../public/assets/contact/image-contact2.jpg';
 import ImageMap from '../public/assets/contact/image-contact-map.png';
 import { ArrowRight } from 'react-feather';
+import useWindowDimensions from '../hooks/use-window-dimension.hook';
+
+import { QUERIES } from '../constants/constants';
 
 type Props = {};
 
 const contact: NextPage = (props: Props) => {
+  const { width } = useWindowDimensions();
+
   return (
     <>
       <Head>
@@ -21,7 +27,12 @@ const contact: NextPage = (props: Props) => {
         {/* TOP SECTION */}
         <TopSectionWrapper>
           <ContactImageWrapper>
-            <Image src={ImageContact} layout="fill" objectFit="fill" priority />
+            <Image
+              src={width <= 550 ? ImageContact2 : ImageContact}
+              layout="fill"
+              objectFit="fill"
+              priority
+            />
           </ContactImageWrapper>
           <ContactTextBox>
             <h1>Contact</h1>
@@ -36,7 +47,7 @@ const contact: NextPage = (props: Props) => {
             </p>
           </ContactTextBox>
         </TopSectionWrapper>
-        <Spacer size={192} />
+        <Spacer size={width <= 1100 ? 96 : 192} />
 
         {/* CONTACT SECTION */}
         <ContactSectionWrapper>
@@ -103,28 +114,47 @@ const Button = styled.button`
   &:hover {
     background: #404a69;
   }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
+    padding: 8px 20px;
+  }
 `;
 
 // TOP SECTION
 const TopSectionWrapper = styled.div`
-  height: 720px;
+  /* height: 720px; */
   width: 100%;
   margin: 0 auto;
-  /* background-color: tomato; */
-
   position: relative;
 
-  & > span {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    filter: brightness(50%);
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
   }
 `;
 
 const ContactImageWrapper = styled.div`
   width: 700px;
-  height: 100%;
-  background-color: lightsalmon;
+  height: 720px;
   position: relative;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    width: 100%;
+    height: 350px;
+    flex: 40%;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    height: 250px;
+  }
+
+  & > span {
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0), 0 0px 20px 0 rgba(0, 0, 0, 0);
+
+    @media ${QUERIES.tabletAndSmaller} {
+      filter: brightness(90%);
+    }
+  }
 `;
 
 const ContactTextBox = styled.div`
@@ -135,13 +165,25 @@ const ContactTextBox = styled.div`
   width: 657px;
   height: 501px;
 
+  @media ${QUERIES.tabletAndSmaller} {
+    position: revert;
+    height: revert;
+    background: revert;
+    width: 100%;
+    flex: 60%;
+    margin: 16px 32px;
+  }
+
   h1 {
     color: #eeeff4;
-    font-size: 15.3rem;
+    font-size: 14.3rem;
     line-height: 0.3;
     font-weight: 600;
-    margin-left: -190px;
-    /* filter: brightness(98%); */
+    margin-left: -124px;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      display: none;
+    }
   }
 
   h2 {
@@ -150,14 +192,31 @@ const ContactTextBox = styled.div`
     margin: 150px 0px 0px 170px;
     font-weight: 600;
     color: #1b1d23;
+    @media ${QUERIES.tabletAndSmaller} {
+      margin: 0px 0px;
+      font-size: 3.5rem;
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.75rem;
+    }
   }
-
   p {
     color: #60636d;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 140%;
     margin-left: 170px;
     margin-top: 40px;
+    @media ${QUERIES.tabletAndSmaller} {
+      margin: 0px 0px;
+      margin-top: 16px;
+
+      br {
+        display: none;
+      }
+    }
+    @media ${QUERIES.phoneAndSmaller} {
+      font-size: 1.125rem;
+    }
   }
 `;
 
@@ -168,6 +227,10 @@ const ContactSectionWrapper = styled.section`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 54%;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    height: 400px;
+  }
 `;
 
 const OfficeTextBox = styled.div`
@@ -183,6 +246,10 @@ const OfficeTextBox = styled.div`
     line-height: 80%;
     color: #1b1d23;
     font-weight: 600;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 3.5rem;
+    }
   }
 
   h3 {
@@ -193,7 +260,7 @@ const OfficeTextBox = styled.div`
 
   p {
     color: #60636d;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     line-height: 140%;
     margin-top: 8px;
   }
@@ -201,6 +268,10 @@ const OfficeTextBox = styled.div`
 
 const MapImageWrapper = styled.div`
   position: relative;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 3.5rem;
+  }
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -211,17 +282,33 @@ const MapImageWrapper = styled.div`
 const FormSectionWrapper = styled.section`
   display: flex;
 
+  @media ${QUERIES.tabletAndSmaller} {
+    flex-direction: row-reverse;
+  }
+
   h2 {
     flex: 35%;
     font-size: 4.5rem;
     line-height: 80%;
     color: #1b1d23;
     font-weight: 600;
+
+    @media ${QUERIES.tabletAndSmaller} {
+      font-size: 2.5rem;
+      flex: 40%;
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
   }
 `;
 
 const FormBox = styled.div`
   flex: 65%;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    flex: 60%;
+  }
 `;
 
 const Input = styled.input`
@@ -241,6 +328,10 @@ const Input = styled.input`
 
   &:focus::placeholder {
     color: transparent;
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    font-size: 1.2rem;
   }
 `;
 
