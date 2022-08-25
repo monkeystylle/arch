@@ -145,16 +145,13 @@ const Home: NextPage = () => {
   );
 };
 
-const PageWrapper = styled.div`
-  /* border: 4px solid tomato; */
-`;
+const PageWrapper = styled.div``;
 
 // TOP PAGE
 const TopSectionWrapper = styled.div`
   height: 680px;
   width: 100%;
   margin: 0 auto;
-  background-color: tomato;
 
   position: relative;
 
@@ -344,7 +341,7 @@ const WelcomeImageBox = styled.div`
   top: 88px;
   right: 0px;
   z-index: -1;
-  background-color: tomato;
+
   position: absolute;
 
   & > span {
@@ -361,7 +358,6 @@ const BigIdeasSectionWrapper = styled.section`
   height: 520px;
   width: 100%;
   margin: 0 auto;
-  background-color: tomato;
 
   position: relative;
 
