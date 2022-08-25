@@ -21,7 +21,7 @@ const Layout = ({ children }: ILayout) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
   max-width: 1200px;
   margin: auto;
 
@@ -29,6 +29,9 @@ const Container = styled.div`
     width: 85%;
   }
   @media ${QUERIES.tabletAndSmaller} {
+    width: 90%;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
     width: 94%;
   }
 `;

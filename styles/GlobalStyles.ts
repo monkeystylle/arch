@@ -2,7 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
-
+// Silence the warning about missing reach-ui styles
+html {
+  --reach-dialog: 1;
+}
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126

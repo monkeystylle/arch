@@ -7,11 +7,13 @@ import Spacer from '../Spacer';
 import Logo from '../../public/assets/nav/logo.svg';
 import { QUERIES } from '../../constants/constants';
 import { Menu } from 'react-feather';
+import MobileMenuModal from '../MobileMenuModal';
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const router = useRouter();
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
   return (
     <NavbarWrapper>
@@ -45,10 +47,14 @@ const Navbar = (props: Props) => {
           height={40}
           priority
         />
-        <MenuButton>
-          <Menu size={38} strokeWidth={1} />
+        <MenuButton onClick={() => setShowMobileMenu(true)}>
+          <Menu size={40} strokeWidth={1} />
         </MenuButton>
       </Mobile>
+      <MobileMenuModal
+        isOpen={showMobileMenu}
+        onDismiss={() => setShowMobileMenu(false)}
+      />
     </NavbarWrapper>
   );
 };
@@ -68,6 +74,8 @@ const Nav = styled.nav`
   font-size: 1.5rem;
   justify-content: start;
   color: #60636c;
+
+  line-height: 57px;
 
   @media ${QUERIES.tabletAndSmaller} {
     font-size: 1.4rem;
@@ -100,6 +108,9 @@ const MenuButton = styled.button`
   }
   &:focus:not(:focus-visible) {
     outline: none;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    margin-bottom: -8px;
   }
 `;
 

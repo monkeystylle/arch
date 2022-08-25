@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {};
+const today = new Date();
 
 const Footer = (props: Props) => {
-  return <FooterWrapper>Copyright 2022 JJCA</FooterWrapper>;
+  return <FooterWrapper>Copyright© {today.getFullYear()} ARCH</FooterWrapper>;
 };
 
 const FooterWrapper = styled.footer`

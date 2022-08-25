@@ -14,7 +14,7 @@ import { QUERIES } from '../constants/constants';
 
 type Props = {};
 
-const contact: NextPage = (props: Props) => {
+const Contact: NextPage = (props: Props) => {
   const { width } = useWindowDimensions();
 
   return (
@@ -29,6 +29,7 @@ const contact: NextPage = (props: Props) => {
           <ContactImageWrapper>
             <Image
               src={width <= 550 ? ImageContact2 : ImageContact}
+              alt=""
               layout="fill"
               objectFit="fill"
               priority
@@ -67,6 +68,7 @@ const contact: NextPage = (props: Props) => {
           <MapImageWrapper>
             <Image
               src={ImageMap}
+              alt="map"
               layout="fill"
               objectFit={width <= 550 ? 'cover' : 'fill'}
               priority
@@ -191,7 +193,7 @@ const ContactTextBox = styled.div`
   }
 
   h1 {
-    color: #eeeff4;
+    color: gainsboro;
     font-size: 14.3rem;
     line-height: 0.3;
     font-weight: 600;
@@ -405,4 +407,4 @@ const TextArea = styled.textarea`
   }
 `;
 
-export default contact;
+export default Contact;

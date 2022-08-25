@@ -6,8 +6,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import Spacer from '../../components/Spacer';
-import { PROJECTS } from './portfolio.constants';
-import { QUERIES } from '../../constants/constants';
+import { QUERIES, PROJECTS } from '../../constants/constants';
 import useWindowDimensions from '../../hooks/use-window-dimension.hook';
 
 type Props = {};
@@ -18,12 +17,12 @@ interface PortfolioProps {
 
 interface Iprojects {
   id: number;
-  name: number;
+  name: string;
   image: StaticImageData;
   details: string;
 }
 
-const portfolio: NextPage<PortfolioProps> = ({ projects }) => {
+const Portfolio: NextPage<PortfolioProps> = ({ projects }) => {
   console.log('hereeeeeeee', projects);
   const { width } = useWindowDimensions();
 
@@ -39,13 +38,14 @@ const portfolio: NextPage<PortfolioProps> = ({ projects }) => {
             <ProjectsCard>
               <Image
                 src={project.image}
+                alt={project.name}
                 layout="fill"
                 objectFit="cover"
                 priority
               />
               <ProjectsTextBox>
                 <ProjectText>
-                  <h3>Project {project.name}</h3>
+                  <h3>{project.name}</h3>
                   <button>View </button>
                 </ProjectText>
               </ProjectsTextBox>
@@ -83,7 +83,9 @@ const PortfolioPageWrapper = styled.div`
 const ProjectsCard = styled.div`
   position: relative;
   width: 100%;
+  cursor: pointer;
   padding-top: 140%;
+  transition: transform 400ms ease;
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -93,6 +95,10 @@ const ProjectsCard = styled.div`
 
   @media ${QUERIES.phoneAndSmaller} {
     padding-top: 60%;
+  }
+
+  &:hover {
+    transform: scale(0.9);
   }
 `;
 
@@ -130,4 +136,4 @@ const ProjectText = styled.div`
   }
 `;
 
-export default portfolio;
+export default Portfolio;

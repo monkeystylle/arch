@@ -11,7 +11,7 @@ import Spacer from '../components/Spacer';
 import { LEADERS, QUERIES } from '../constants/constants';
 import useWindowDimensions from '../hooks/use-window-dimension.hook';
 
-const about: NextPage = (props: any) => {
+const About: NextPage = (props: any) => {
   const { width } = useWindowDimensions();
 
   return (
@@ -26,6 +26,7 @@ const about: NextPage = (props: any) => {
           <AboutImageWrapper>
             <Image
               src={width <= 1100 ? AboutTopTablet : AboutTop}
+              alt=""
               layout="fill"
               objectFit="fill"
               priority
@@ -76,6 +77,7 @@ const about: NextPage = (props: any) => {
           <HeritageImageWrapper>
             <Image
               src={AboutHeritage}
+              alt=""
               layout="fill"
               objectFit="cover"
               priority
@@ -96,7 +98,12 @@ const about: NextPage = (props: any) => {
             {LEADERS.map(leader => (
               <LeaderCard key={leader.id}>
                 <ImageWrapper>
-                  <Image src={leader.image} layout="fill" objectFit="fill" />
+                  <Image
+                    src={leader.image}
+                    alt=""
+                    layout="fill"
+                    objectFit="fill"
+                  />
                 </ImageWrapper>
                 <h3>{leader.name}</h3>
                 <p>{leader.role}</p>
@@ -159,7 +166,8 @@ const AboutTextBox = styled.div`
   }
 
   h1 {
-    color: #eeeff4;
+    /* color: #eeeff4; */
+    color: gainsboro;
     font-size: 15.3rem;
     line-height: 0.3;
     font-weight: 600;
@@ -293,7 +301,6 @@ const LeadersTextBox = styled.div`
 
     @media ${QUERIES.tabletAndSmaller} {
       font-size: 3.5rem;
-      padding-left: 32px;
 
       br {
         display: none;
@@ -316,7 +323,6 @@ const LeadersImageBox = styled.div`
     gap: 48px;
     justify-content: center;
     align-items: center;
-    padding: 32px;
   }
   @media ${QUERIES.phoneAndSmaller} {
     grid-template-columns: 1fr;
@@ -364,4 +370,4 @@ const ImageWrapper = styled.div`
   }
 `;
 
-export default about;
+export default About;

@@ -5,14 +5,11 @@ import { useRouter } from 'next/router';
 import Paramour from '../public/assets/home/paramour.jpg';
 import ImageWelcome from '../public/assets/home/image-welcome.jpg';
 import ImageSmallTeam from '../public/assets/home/image-small-team.jpg';
-import ImageFeaturedProject1 from '../public/assets/portfolio/proj1.jpg';
-import ImageFeaturedProject2 from '../public/assets/portfolio/proj2.jpg';
-import ImageFeaturedProject3 from '../public/assets/portfolio/proj3.jpg';
 
 import Head from 'next/head';
 import Spacer from '../components/Spacer';
 import { ArrowRight } from 'react-feather';
-import { QUERIES } from '../constants/constants';
+import { QUERIES, FEATURED } from '../constants/constants';
 import useWindowDimensions from '../hooks/use-window-dimension.hook';
 
 const Home: NextPage = () => {
@@ -29,9 +26,15 @@ const Home: NextPage = () => {
         <PageWrapper>
           {/* Top Content */}
           <TopSectionWrapper>
-            <Image src={Paramour} layout="fill" objectFit="cover" priority />
+            <Image
+              src={Paramour}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
             <TextboxWrapper>
-              <h2>JJCA</h2>
+              <h2>ARCH</h2>
               <h3>Architectural+Build</h3>
               <p>
                 The Seraph Station project challenged us to design a <br />
@@ -52,7 +55,7 @@ const Home: NextPage = () => {
             <WelcomeTextBox>
               <h1>Welcome</h1>
               <h2>
-                Welcome to <br /> JJCA{' '}
+                Welcome to <br /> ARCH{' '}
               </h2>
               <p>
                 We have a unique network and skillset to help bring your
@@ -73,14 +76,24 @@ const Home: NextPage = () => {
               </p>
             </WelcomeTextBox>
             <WelcomeImageBox>
-              <Image src={ImageWelcome} layout="fill" objectFit="cover" />
+              <Image
+                src={ImageWelcome}
+                alt=""
+                layout="fill"
+                objectFit="cover"
+              />
             </WelcomeImageBox>
           </WelcomeSectionWrapper>
           <Spacer size={80} />
 
           {/* Small Team Big Ideas */}
           <BigIdeasSectionWrapper>
-            <Image src={ImageSmallTeam} layout="fill" objectFit="cover" />
+            <Image
+              src={ImageSmallTeam}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
             <BigIdeasTextBox>
               <h2>
                 Small Team, <br /> Big Ideas{' '}
@@ -103,48 +116,26 @@ const Home: NextPage = () => {
               </FeaturedButton>
             </FeaturedHeader>
             <FeaturedFlexWrapper>
-              <FeaturedCard>
-                <Image
-                  src={ImageFeaturedProject1}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <FeaturedTextBox>
-                  <h2>1</h2>
-                  <ProjectText>
-                    <h3>Project One</h3>
-                    <button>View Project</button>
-                  </ProjectText>
-                </FeaturedTextBox>
-              </FeaturedCard>
-              <FeaturedCard>
-                <Image
-                  src={ImageFeaturedProject2}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <FeaturedTextBox>
-                  <h2>2</h2>
-                  <ProjectText>
-                    <h3>Project Two</h3>
-                    <button>View Project</button>
-                  </ProjectText>
-                </FeaturedTextBox>
-              </FeaturedCard>
-              <FeaturedCard>
-                <Image
-                  src={ImageFeaturedProject3}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <FeaturedTextBox>
-                  <h2>3</h2>
-                  <ProjectText>
-                    <h3>Project Three</h3>
-                    <button>View Project</button>
-                  </ProjectText>
-                </FeaturedTextBox>
-              </FeaturedCard>
+              {FEATURED.map(feature => (
+                <FeaturedCard
+                  key={feature.id}
+                  onClick={() => router.push(`/portfolio/${feature.id}`)}
+                >
+                  <Image
+                    src={feature.image}
+                    alt={feature.projectName}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <FeaturedTextBox>
+                    <h2>{feature.project}</h2>
+                    <ProjectText>
+                      <h3>{feature.projectName}</h3>
+                      <button>View Project</button>
+                    </ProjectText>
+                  </FeaturedTextBox>
+                </FeaturedCard>
+              ))}
             </FeaturedFlexWrapper>
           </FeaturedSectionWrapper>
           <Spacer size={width <= 1100 ? 60 : 128} />
@@ -285,7 +276,7 @@ const WelcomeTextBox = styled.div`
   width: 100%;
 
   h1 {
-    color: #f0f0f5;
+    color: gainsboro;
     position: absolute;
     left: 20px;
     font-size: 16rem;
@@ -480,17 +471,31 @@ const FeaturedCard = styled.div`
   position: relative;
   height: 560px;
   flex: 1;
+  cursor: pointer;
+
+  transition: transform 500ms ease;
+
+  &:hover {
+    transform: scale(0.95);
+    filter: brightness(130%);
+
+    h3,
+    button {
+      opacity: 0;
+    }
+  }
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(85%);
+
     @media ${QUERIES.phoneAndSmaller} {
       border-radius: 4px;
     }
   }
 
   @media ${QUERIES.tabletAndSmaller} {
-    height: 400px;
+    height: 350px;
   }
   @media ${QUERIES.phoneAndSmaller} {
     height: 200px;

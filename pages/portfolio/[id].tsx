@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
-import { PROJECTS } from './portfolio.constants';
+import { PROJECTS, QUERIES } from '../../constants/constants';
 
 type Props = {};
 
@@ -55,11 +55,12 @@ export const getStaticProps: GetStaticProps = async context => {
 
 const PortfolioPagesWrapper = styled.div`
   width: 60%;
+  width: 100%;
   margin: 0 auto;
 `;
 
 const ProjectImage = styled.div`
-  width: 100%;
+  width: 60%;
   height: 400px;
 
   position: relative;
@@ -67,6 +68,13 @@ const ProjectImage = styled.div`
 
   & > span {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  @media ${QUERIES.tabletAndSmaller} {
+    width: 80%;
+  }
+  @media ${QUERIES.phoneAndSmaller} {
+    width: 100%;
   }
 `;
 
