@@ -29,7 +29,7 @@ const Portfolio: NextPage<PortfolioProps> = ({ projects }) => {
   return (
     <>
       <Head>
-        <title>JJCA | Portfolio</title>
+        <title>ARCH | Portfolio</title>
         <meta name="keywords" content="jjca" />
       </Head>
       <PortfolioPageWrapper>

@@ -17,7 +17,7 @@ const About: NextPage = (props: any) => {
   return (
     <>
       <Head>
-        <title>JJCA | About</title>
+        <title>ARCH | About</title>
         <meta name="keywords" content="jjca" />
       </Head>
       <AboutPageWrapper>

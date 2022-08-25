@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     <>
       <>
         <Head>
-          <title>JJCA | Home</title>
+          <title>ARCH | Home</title>
           <meta name="keywords" content="jjca" />
         </Head>
         <PageWrapper>

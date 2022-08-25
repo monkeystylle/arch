@@ -20,7 +20,7 @@ const Contact: NextPage = (props: Props) => {
   return (
     <>
       <Head>
-        <title>JJCA | Conatact</title>
+        <title>ARCH | Contact</title>
         <meta name="keywords" content="jjca" />
       </Head>
       <ContactPageWrapper>
